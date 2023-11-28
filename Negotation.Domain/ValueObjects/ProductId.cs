@@ -1,4 +1,5 @@
 ﻿using Negotation.Domain.Exceptions;
+using System;
 
 namespace Negotation.Domain.ValueObjects;
 

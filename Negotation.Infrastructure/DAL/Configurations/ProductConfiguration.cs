@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Negotation.Domain.Entities;
 using Negotation.Domain.ValueObjects;
 
@@ -16,5 +17,9 @@ internal sealed class ProductConfiguration : IEntityTypeConfiguration<Product>
         builder.Property(x => x.Name)
             .IsRequired()
             .HasConversion(x => x.Value, x => new ProductName(x));
+
+        builder.Property(x => x.Price)
+            .IsRequired()
+            .HasConversion(x => x.Value, x => new ProductPrice(x));
     }
 }

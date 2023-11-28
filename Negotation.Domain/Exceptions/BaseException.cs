@@ -1,4 +1,6 @@
-﻿namespace Negotation.Domain.Exceptions;
+﻿using System;
+
+namespace Negotation.Domain.Exceptions;
 
 public abstract class BaseException : Exception
 {

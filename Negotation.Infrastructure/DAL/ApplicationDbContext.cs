@@ -3,7 +3,7 @@ using Negotation.Domain.Entities;
 
 namespace Negotation.Infrastructure.DAL;
 
-internal sealed class ApplicationDbContext : DbContext
+public sealed class ApplicationDbContext : DbContext
 {
     public DbSet<Product> Products { get; set; }
 

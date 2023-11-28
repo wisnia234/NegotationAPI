@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Negotation.Infrastructure.DAL;
+using Negotation.Infrastructure.Repositories;
 
-namespace Negotation.Infrastructure.Extensions
+namespace Negotation.Infrastructure.Extensions;
+
+public static class Extensions
 {
-    internal class Extensions
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddDataAccessLayer(configuration);
+        services.AddRepositories();
+
+        return services;
     }
 }

@@ -34,5 +34,18 @@ internal sealed class ProductRepository : IProductRepository
         => await _products
         .SingleOrDefaultAsync(x => x.Name == name);
 
-    
+    public async Task RemoveByIdAsync(ProductId productId)
+    {
+       Product product = await _products
+            .SingleOrDefaultAsync(x => x.Id == productId);
+
+       _products.Remove(product);
+    }
+
+    public async Task RemoveByNameAsync(ProductName productName)
+    {
+        Product product = await _products
+            .SingleOrDefaultAsync(x => x.Name == productName);
+        _products.Remove(product);
+    }
 }

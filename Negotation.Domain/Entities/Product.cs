@@ -6,4 +6,5 @@ public class Product
 {
     public ProductId Id { get; set; }
     public ProductName Name { get; set; } 
+    public ProductPrice Price { get; set; }
 }

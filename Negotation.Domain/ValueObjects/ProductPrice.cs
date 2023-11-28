@@ -1,6 +1,8 @@
-﻿namespace Negotation.Domain.ValueObjects;
+﻿using Negotation.Domain.Exceptions;
 
-internal sealed record ProductPrice
+namespace Negotation.Domain.ValueObjects;
+
+public sealed record ProductPrice
 {
     public decimal Value { get; set; }
 
@@ -8,15 +10,15 @@ internal sealed record ProductPrice
     {
         if(value < 0)
         {
-
+            throw new PriceIsLessThanZeroException(value.ToString());
         }
 
         Value = value;
     }
 
-    public static implicit operator decimal(ProductPrice productName) => productName.Value;
+    public static implicit operator decimal(ProductPrice productPrice) => productPrice.Value;
 
-    public static implicit operator ProductPrice(decimal productName) => new(productName);
+    public static implicit operator ProductPrice(decimal productPrice) => new(productPrice);
 
     public override string ToString() => Value.ToString();
 }

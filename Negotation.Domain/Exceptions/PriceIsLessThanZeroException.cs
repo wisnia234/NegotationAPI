@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Negotation.Domain.Exceptions;
 
-namespace Negotation.Domain.Exceptions
+public sealed class PriceIsLessThanZeroException : BaseException
 {
-    internal class PriceIsLessThanZeroException
+    public PriceIsLessThanZeroException(string exceptionMessage) 
+        : base($"Provided price: {exceptionMessage} must not contain a value lesser than zero")
     {
     }
 }
