@@ -1,6 +1,7 @@
 using Negotation.Infrastructure.Extensions;
 using Negotation.Application.Extensions;
 using NegotationAPI.Controllers;
+using Negotation.Infrastructure.Exceptions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<ExceptionMiddleware>();
 app.ProductEndpoints();
 app.UseHttpsRedirection();
 

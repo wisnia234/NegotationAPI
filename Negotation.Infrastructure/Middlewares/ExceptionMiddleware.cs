@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Negotation.Domain.Exceptions;
-using System;
-using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace Negotation.Infrastructure.Exceptions;
 
-internal class ExceptionMiddleware : IMiddleware
+public class ExceptionMiddleware : IMiddleware
 {
 
     public async Task InvokeAsync(HttpContext context, RequestDelegate next)
@@ -29,7 +28,10 @@ internal class ExceptionMiddleware : IMiddleware
         };
 
         context.Response.StatusCode = statusCode;
-        await context.Response.WriteAsync(error);
+        context.Response.ContentType = "application/json";
+
+        string json = JsonSerializer.Serialize(error);
+        await context.Response.WriteAsync(json);
     }
 
 }
