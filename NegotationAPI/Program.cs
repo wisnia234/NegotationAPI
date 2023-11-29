@@ -22,7 +22,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseMiddleware<ExceptionMiddleware>();
-app.ProductEndpoints();
+app.UseProductEndpoints();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
