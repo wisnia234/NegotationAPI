@@ -11,7 +11,7 @@ public sealed record ProductId
     {
         if(value == Guid.Empty)
         {
-            throw new EmptyProductIdException();
+            throw new EmptyIdException("Product Id cannot be null");
         }
 
         Value = value;

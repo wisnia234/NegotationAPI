@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-
-namespace Negotation.Infrastructure.UnitOfWork;
+﻿namespace Negotation.Infrastructure.UnitOfWork;
 
 public interface IUnitOfWork
 {
