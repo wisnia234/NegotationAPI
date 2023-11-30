@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Negotation.Domain.Entities;
+using Negotation.Domain.Entities.Utils;
 using Negotation.Domain.ValueObjects;
 
 namespace Negotation.Infrastructure.DAL.Configurations;
@@ -21,12 +22,18 @@ internal class NegotiationConfiguration : IEntityTypeConfiguration<Negotiation>
         builder.HasOne(x => x.Product)
             .WithOne()
             .HasForeignKey<Negotiation>(x => x.ProductId)
-            .IsRequired();
+            .IsRequired()
+            .OnDelete(DeleteBehavior.Restrict);
 
         builder.HasOne(x => x.User)
             .WithMany(x => x.Negotiations)
             .HasForeignKey(x => x.UserId)
-            .IsRequired(false);
+            .IsRequired()
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder.Property(x => x.Status)
+            .HasConversion(x => x.ToString(), x => (Status)Enum.Parse(typeof(Status), x))
+            .IsRequired();
 
         
     }

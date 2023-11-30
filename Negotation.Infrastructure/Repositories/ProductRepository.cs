@@ -22,10 +22,6 @@ internal sealed class ProductRepository : IProductRepository
         await _products.AddAsync(product);
     }
 
-    public async Task<IEnumerable<Product>> GetAllAsync()
-        => await _products.ToListAsync();
-
-
     public async Task<Product> GetByIdAsync(ProductId productId)
         => await _products
         .SingleOrDefaultAsync(x => x.Id == productId);

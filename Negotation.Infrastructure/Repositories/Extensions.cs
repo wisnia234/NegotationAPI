@@ -13,8 +13,11 @@ internal static class Extensions
         services.AddScoped<IProductRepository, ProductRepository>();
         services.AddScoped<IUnitOfWork, DbUnitOfWork>();
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<INegotiationRepository, NegotiationRepository>();
 
         services.TryDecorate(typeof(ICommandHandler<>), typeof(UnitOfWorkCommandHandlerDecorator<>));
         return services;
     }
+
+
 }

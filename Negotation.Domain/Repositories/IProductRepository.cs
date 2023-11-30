@@ -7,7 +7,6 @@ namespace Negotation.Domain.Repositories;
 
 public interface IProductRepository
 {
-    Task<IEnumerable<Product>> GetAllAsync();
     Task<Product> GetByIdAsync(ProductId productId);
     Task<Product> GetByNameAsync(ProductName productName);
     Task AddAsync(Product product);

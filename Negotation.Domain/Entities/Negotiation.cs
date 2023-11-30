@@ -1,4 +1,5 @@
-﻿using Negotation.Domain.ValueObjects;
+﻿using Negotation.Domain.Entities.Utils;
+using Negotation.Domain.ValueObjects;
 
 namespace Negotation.Domain.Entities;
 
@@ -12,6 +13,10 @@ public class Negotiation
 
     public UserId UserId { get; set; }
     public User User { get; set; }
+
+    public Status Status { get; set; }
+
+    public int Attempts { get; set; }
 
     public string? Comment { get; set; }
 }

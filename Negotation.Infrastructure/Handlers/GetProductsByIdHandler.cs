@@ -21,7 +21,7 @@ internal sealed class GetProductsByIdHandler : IQueryHandler<GetProductById, Pro
 
     public async Task<ProductDto> HandleAsync(GetProductById query)
     {
-        ProductId productId = new(query.ProductId);
+        ProductId productId = query.ProductId;
         Product product = await _products
             .AsNoTracking()
             .SingleOrDefaultAsync(x => x.Id == productId);

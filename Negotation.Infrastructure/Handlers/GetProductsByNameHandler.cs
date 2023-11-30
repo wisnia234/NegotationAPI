@@ -19,7 +19,7 @@ internal class GetProductsByNameHandler : IQueryHandler<GetProductByName, Produc
     }
     public async Task<ProductDto> HandleAsync(GetProductByName query)
     {
-        ProductName productName = new(query.ProductName);
+        ProductName productName = query.ProductName;
         Product product = await _products
             .AsNoTracking()
             .SingleOrDefaultAsync(x => x.Name == productName);
