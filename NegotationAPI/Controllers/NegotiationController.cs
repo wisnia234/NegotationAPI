@@ -1,5 +1,8 @@
-﻿using Negotation.Application.Abstractions;
+﻿using Microsoft.AspNetCore.Mvc;
+using Negotation.Application.Abstractions;
 using Negotation.Application.Commands;
+using Negotation.Application.Queries;
+using Negotation.Domain.Entities;
 
 namespace NegotationAPI.Controllers;
 
@@ -25,6 +28,21 @@ internal static class NegotiationController
         {
             await handler.HandleAsync(command);
             return Results.NoContent();
+        });
+
+        app.MapDelete("negotiations/delete", async ([FromBody] RemoveNegotiationById command, ICommandHandler<RemoveNegotiationById> handler) =>
+        {
+            await handler.HandleAsync(command);
+            return Results.NoContent();
+        });
+
+        app.MapGet("negotiations/get", async (IQueryHandler<GetNegotiations, IEnumerable<Negotiation>> handler) =>
+        {
+            GetNegotiations query = new();
+            var result = await handler.HandleAsync(query);
+
+            return Results.Ok(result);
+
         });
 
         return app;

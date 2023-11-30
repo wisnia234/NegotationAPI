@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Negotation.Infrastructure.UnitOfWork;
 
-internal class DbUnitOfWork : IUnitOfWork
+internal sealed class DbUnitOfWork : IUnitOfWork
 {
     private readonly ApplicationDbContext _dbContext;
 

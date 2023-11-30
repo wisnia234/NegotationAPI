@@ -29,11 +29,6 @@ internal sealed class NegotiationRepository : INegotiationRepository
         => await _negotiations
         .SingleOrDefaultAsync(x => x.Id == negotiationId);
 
-    public Task<Negotiation> GetNegotiationByUserId(UserId userId)
-    {
-        throw new NotImplementedException();
-    }
-
     public Task UpdateAsync(Negotiation negotiation)
     {
         _negotiations.Update(negotiation);

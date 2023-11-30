@@ -32,7 +32,7 @@ internal sealed class AddNegotiationHandler : ICommandHandler<AddNegotiation>
 
         if (product is null)
         {
-            throw new WrongUserIdException(command.UserId.ToString());
+            throw new WrongProductIdException(command.ProductId.ToString());
         }
 
         if(command.ProposedPrice > 2 * product.Price)
@@ -49,9 +49,7 @@ internal sealed class AddNegotiationHandler : ICommandHandler<AddNegotiation>
             Attempts = 1,
             Status = Status.Considered,
             ProposedPrice = command.ProposedPrice,
-        };
-
-        
+        };       
 
         await _negotiationRepository.AddAsync(negotiation);
     }

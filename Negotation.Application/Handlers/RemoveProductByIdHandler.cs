@@ -5,7 +5,7 @@ using Negotation.Domain.Repositories;
 
 namespace Negotation.Application.Handlers;
 
-internal class RemoveProductByIdHandler : ICommandHandler<RemoveProductById>
+internal sealed class RemoveProductByIdHandler : ICommandHandler<RemoveProductById>
 {
     private readonly IProductRepository _repository;
 
